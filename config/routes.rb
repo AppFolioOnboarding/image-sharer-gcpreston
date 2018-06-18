@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   get '/filters/:tag', to: 'filters#show', as: 'filter'
 
   resources :feedbacks, only: [:new]
+
+  namespace :api do
+    resource :feedbacks, only: [:create]
+  end
 end
