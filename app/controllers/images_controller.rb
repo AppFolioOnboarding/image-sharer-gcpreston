@@ -8,7 +8,7 @@ class ImagesController < ActionController::Base
     if @image.valid?
       redirect_to @image
     else
-      render 'images/new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
