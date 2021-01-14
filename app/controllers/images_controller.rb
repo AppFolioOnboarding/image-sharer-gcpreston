@@ -13,6 +13,6 @@ class ImagesController < ActionController::Base
   end
 
   def show
-    @image_url = Image.find(params[:id]).link
+    @image = Image.find(params[:id])
   end
 end

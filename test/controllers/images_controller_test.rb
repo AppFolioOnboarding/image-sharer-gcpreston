@@ -20,4 +20,25 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
   end
+
+  test 'empty tags displayed on show page' do
+    Image.create(link: 'https://www.example.com/2')
+    get image_url(Image.last.id)
+
+    assert_response :success
+    assert_select 'h2', 'Tags'
+    assert_select 'p', 'None'
+  end
+
+  test 'tags displayed on show page' do
+    Image.create(link: 'https://www.example.com', tag_list: 'tag1, tag2')
+    get image_url(Image.last.id)
+
+    assert_response :success
+    assert_select 'h2', 'Tags'
+    assert_select 'li' do |elements|
+      assert_equal 'tag1', elements[0].content
+      assert_equal 'tag2', elements[1].content
+    end
+  end
 end
