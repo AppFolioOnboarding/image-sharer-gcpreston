@@ -1,3 +1,9 @@
 <h1>Welcome to Ropes!</h1>
 <p>Use this website to upload and share images :)</p>
 <%= link_to 'Upload an image', new_image_path %>
+<br/>
+<h2>Image Index</h2>
+<% @images.each do |image| %>
+  <%= image_tag image.link, width: '400px' %>
+  <br/>
+<% end %>
