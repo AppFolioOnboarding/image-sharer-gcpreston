@@ -18,4 +18,21 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
       assert_equal images[1]['src'], img1.link
     end
   end
+
+  test 'no tags displayed on empty state' do
+    get root_path
+    assert_select 'span', 0
+  end
+
+  test 'tags displayed next to images' do
+    Image.create(link: 'https://example.com', tag_list: 'tag1, tag2')
+    Image.create(link: 'https://example.com/2')
+
+    get root_path
+    assert_select 'span' do |elements|
+      assert_equal 2, elements.length
+      assert_equal 'No tags', elements[0].content
+      assert_equal 'Tags: tag1, tag2', elements[1].content
+    end
+  end
 end

@@ -1,1 +1,11 @@
-<%= image_tag @image_url %>
+<h2>Tags</h2>
+<% if @image.tags.empty? %>
+  <p>None</p>
+<% else %>
+  <ul>
+    <% @image.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= image_tag @image.link %>
