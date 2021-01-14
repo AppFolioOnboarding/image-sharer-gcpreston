@@ -32,7 +32,7 @@ class ApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_select 'span' do |elements|
       assert_equal 2, elements.length
       assert_equal 'No tags', elements[0].content
-      assert_equal 'Tags: tag1, tag2', elements[1].content
+      assert_select elements[1], 'a', 2
     end
   end
 end

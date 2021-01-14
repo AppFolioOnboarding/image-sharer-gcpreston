@@ -5,10 +5,15 @@
 <h2>Image Index</h2>
 <% @images.each do |image| %>
   <%= image_tag image.link, width: '400px' %>
-  <% if image.tag_list.empty? %>
+  <% if image.tags.empty? %>
     <span>No tags</span>
   <% else %>
-    <span>Tags: <%= image.tag_list.join(', ') %></span>
+    <span>
+      Tags:
+      <% image.tags.map do |tag| %>
+        <%= link_to tag.name, '/filters/' + tag.name %>
+      <% end %>
+    </span>
   <% end %>
   <br/>
 <% end %>
