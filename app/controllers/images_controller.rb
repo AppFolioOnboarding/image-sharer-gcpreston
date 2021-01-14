@@ -4,8 +4,8 @@ class ImagesController < ActionController::Base
   end
 
   def create
-    @image = Image.create(params[:image].permit(:link))
-    if @image.valid?
+    @image = Image.create(params[:image].permit(:link, :tag_list))
+    if @image.save
       redirect_to @image
     else
       render :new, status: :unprocessable_entity
