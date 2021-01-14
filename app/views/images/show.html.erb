@@ -4,7 +4,7 @@
 <% else %>
   <ul>
     <% @image.tags.each do |tag| %>
-      <li><%= tag.name %></li>
+      <li><%= link_to tag.name, filter_path(tag: tag) %></li>
     <% end %>
   </ul>
 <% end %>

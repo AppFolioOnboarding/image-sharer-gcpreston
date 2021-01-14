@@ -1,0 +1,8 @@
+<% if @images.empty? %>
+  <h2>No images with tag <%= @filter %></h2>
+<% else %>
+  <% @images.each do |image| %>
+    <%= image_tag image.link, width: '400px' %>
+    <br/>
+  <% end %>
+<% end %>
