@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'application' %>
+
 <h2>Tags</h2>
 <% if @image.tags.empty? %>
   <p>None</p>
@@ -8,4 +10,7 @@
     <% end %>
   </ul>
 <% end %>
+
+<%= button_to 'Delete Image', { action: 'destroy', id: @image.id },
+              method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= image_tag @image.link %>
