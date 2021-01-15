@@ -4,7 +4,7 @@
 <br/>
 <h2>Image Index</h2>
 <% @images.each do |image| %>
-  <%= image_tag image.link, width: '400px' %>
+  <%= link_to image_tag(image.link, width: '400px'), image_path(image) %>
   <% if image.tags.empty? %>
     <span>No tags</span>
   <% else %>
