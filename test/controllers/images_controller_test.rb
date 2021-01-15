@@ -41,4 +41,19 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
       assert_equal 'tag2', elements[1].content
     end
   end
+
+  test 'delete image' do
+    Image.create(link: 'https://www.example.com')
+    assert_difference 'Image.count', -1 do
+      delete image_url(Image.last.id)
+    end
+    assert_redirected_to root_path
+  end
+
+  test 'delete non-existent image' do
+    assert_no_difference 'Image.count' do
+      delete image_url(1)
+    end
+    assert_redirected_to root_path
+  end
 end
