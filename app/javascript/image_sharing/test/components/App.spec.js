@@ -10,7 +10,9 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
 
     assert.strictEqual(wrapper.find('Header').length, 1);
+    assert.strictEqual(wrapper.find('FeedbackForm').length, 1);
     assert.strictEqual(wrapper.find('Footer').length, 1);
+
     assert.strictEqual(wrapper.find('Header').prop('title'), 'Tell us what you think');
     assert.strictEqual(wrapper.find('Footer').prop('text'), 'Copyright: Appfolio Inc. Onboarding');
   });
